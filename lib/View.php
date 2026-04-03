@@ -72,7 +72,6 @@ class View
      */
     private function _getCacheBuster($file)
     {
-        //
         if ((bool) preg_match('#[0-9]\.m?js$#', (string) $file)) {
             return '';
         }
@@ -102,7 +101,7 @@ class View
     private function _linkTag($file)
     {
         echo '<link rel="modulepreload" href="', $file,
-            $this->_getCacheBuster($file), '"', $this->_getSri($file), ' />', PHP_EOL;
+        $this->_getCacheBuster($file), '"', $this->_getSri($file), ' />', PHP_EOL;
     }
 
     /**
@@ -115,8 +114,8 @@ class View
     private function _scriptTag($file, $attributes = '')
     {
         echo '<script ', $attributes,
-            ' type="text/javascript" data-cfasync="false" src="', $file,
-            $this->_getCacheBuster($file), '"', $this->_getSri($file),
-            ' crossorigin="anonymous"></script>', PHP_EOL;
+        ' type="text/javascript" data-cfasync="false" src="', $file,
+        $this->_getCacheBuster($file), '"', $this->_getSri($file),
+        ' crossorigin="anonymous"></script>', PHP_EOL;
     }
 }
