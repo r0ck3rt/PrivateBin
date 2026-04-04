@@ -9,8 +9,8 @@
         const COMPRESSION_LEVEL = 7;
         const NO_ZLIB_HEADER = -1;
         const CHUNK_SIZE = 32 * 1024;
-        const Module = await import('zlib-1.3.2.mjs');
-        Module.map = {};
+        const createModule = (await import('./zlib-1.3.2.js')).default;
+        const Module = await createModule({map: {}});
         const srcPtr = Module.__malloc(CHUNK_SIZE);
         const dstPtr = Module.__malloc(CHUNK_SIZE);
 
@@ -44,7 +44,7 @@
             }
 
             getBuffer() {
-                return Buffer.from(this.buff.buffer, 0, this.offset);
+                return this.buff.slice(0, this.offset);
             }
         }
 
@@ -78,7 +78,7 @@
             }
 
             getBuffer() {
-                return Buffer.from(this.buff.buffer, 0, this.offset);
+                return this.buff.slice(0, this.offset);
             }
         }
 
