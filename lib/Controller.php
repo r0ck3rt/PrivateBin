@@ -416,7 +416,6 @@ class Controller
         header('Referrer-Policy: no-referrer');
         header('X-Content-Type-Options: nosniff');
         header('X-Frame-Options: deny');
-        header('X-XSS-Protection: 1; mode=block');
 
         // label all the expiration options
         $expire = array();
