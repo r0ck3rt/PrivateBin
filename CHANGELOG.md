@@ -4,7 +4,8 @@
 * ADDED: Translations for Swedish & Persian
 * CHANGED: Deduplicate JSON error message translations
 * CHANGED: Refactored translation of exception messages
-* CHANGED: Upgrading libraries to: DOMpurify 3.3.2, ip-lib 1.22.0, polyfill-php80 1.33.0 & zlib 1.3.2
+* CHANGED: Upgrading libraries to: DOMpurify 3.3.2, ip-lib 1.22.0, polyfill-php80 1.34.0 & zlib 1.3.2
+* CHANGED: Remove obsolete X-XSS-Protection header (#1825)
 * FIXED: Some exceptions not getting translated
 * FIXED: Attachment disappears after a "paste" in the message area (#1731)
 * FIXED: The content format is not reset when creating a new document (#1707)
