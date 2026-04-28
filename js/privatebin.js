@@ -3157,6 +3157,11 @@ jQuery.PrivateBin = (function($) {
             if (!$attachment.length) {
                 return false;
             }
+            // Check if there are actual attachment data items (not just UI elements)
+            if (attachmentsData.length > 0) {
+                return true;
+            }
+            // Also check UI elements in case data was removed but UI wasn't updated
             return [...$attachment.children()].length > 0;
         };
 
@@ -3170,10 +3175,8 @@ jQuery.PrivateBin = (function($) {
          */
         me.hasAttachmentData = function()
         {
-            if ($attachment.length) {
-                return true;
-            }
-            return false;
+            // Check if there are actual attachment data items (not just UI elements)
+            return attachmentsData.length > 0;
         };
 
         /**
@@ -5181,7 +5184,7 @@ jQuery.PrivateBin = (function($) {
             const plainText = Editor.getText(),
                   format    = PasteViewer.getFormat(),
                   // the methods may return different values if no files are attached (null, undefined or false)
-                  files     = TopNav.getFileList() || AttachmentViewer.getFiles() || AttachmentViewer.hasAttachment();
+                  files     = TopNav.getFileList() || AttachmentViewer.getFiles() || AttachmentViewer.hasAttachmentData();
 
             // do not send if there is no data
             if (plainText.length === 0 && !files) {
@@ -5227,7 +5230,10 @@ jQuery.PrivateBin = (function($) {
                 };
             if (attachmentsData.length) {
                 cipherMessage['attachment'] = attachmentsData;
-                cipherMessage['attachment_name'] = AttachmentViewer.getFiles().map((fileInfo => fileInfo.name));
+                const fileNames = AttachmentViewer.getFiles();
+                if (fileNames && Array.isArray(fileNames)) {
+                    cipherMessage['attachment_name'] = fileNames.map((fileInfo => fileInfo.name));
+                }
             } else if (AttachmentViewer.hasAttachment()) {
                 // fall back to cloned part
                 let attachments = AttachmentViewer.getAttachments();
