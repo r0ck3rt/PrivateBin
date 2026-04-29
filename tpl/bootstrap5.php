@@ -378,7 +378,7 @@ if ($FILEUPLOAD) :
 <?php
 endif;
 ?>
-				<div id="status" role="alert" class="d-flex justify-content-between align-items-center alert alert-<?php echo $ISDELETED ? 'success' : 'info'; echo empty($STATUS) ? ' hidden' : '' ?>">
+				<div id="status" role="alert" class="d-flex align-items-center alert alert-<?php echo $ISDELETED ? 'success' : 'info'; echo empty($STATUS) ? ' hidden' : '' ?>">
 					<div>
 						<svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="img/bootstrap-icons.svg#info-circle" /></svg>
 						<?php echo I18n::encode($STATUS), PHP_EOL; ?>
@@ -386,7 +386,7 @@ endif;
 <?php
 if ($ISDELETED) :
 ?>
-					<button type="button" class="btn btn-secondary d-flex justify-content-center align-items-center gap-1" id="new-from-alert">
+					<button type="button" class="btn btn-secondary d-flex justify-content-center align-items-center gap-1 ms-auto" id="new-from-alert">
 						<svg width="16" height="16" fill="currentColor" aria-hidden="true"><use href="img/bootstrap-icons.svg#repeat" /></svg>
 						<?php echo I18n::_('Start over'), PHP_EOL; ?>
 					</button>
