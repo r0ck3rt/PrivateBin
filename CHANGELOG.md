@@ -9,6 +9,7 @@
 * FIXED: Some exceptions not getting translated
 * FIXED: Attachment disappears after a "paste" in the message area (#1731)
 * FIXED: The content format is not reset when creating a new document (#1707)
+* FIXED: State corruption after removing attachment (#1824)
 
 ## 1.7.9 (2025-11-13)
 * CHANGED: Upgrading libraries to: base-x 5.0.1, bootstrap 5.3.8, DOMpurify 3.2.7, ip-lib 1.21.0 & kjua 0.10.0
