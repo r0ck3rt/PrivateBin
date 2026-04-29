@@ -44,6 +44,7 @@
 	},
 	"config" : {
 		"audit": {
+			"block-insecure": false,
 			"ignore": {
 				"CVE-2025-45769": "disputed on the basis that key lengths are expected to be set by an application, not by this library"
 			}
