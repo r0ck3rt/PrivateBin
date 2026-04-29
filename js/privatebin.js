@@ -5230,9 +5230,7 @@ jQuery.PrivateBin = (function($) {
                 };
             if (attachmentsData.length) {
                 cipherMessage['attachment'] = attachmentsData;
-                const fileNames = AttachmentViewer.getFiles();
-                if (fileNames && Array.isArray(fileNames)) {
-                    cipherMessage['attachment_name'] = fileNames.map((fileInfo => fileInfo.name));
+                cipherMessage['attachment_name'] = AttachmentViewer.getFiles()?.map((fileInfo => fileInfo.name)) ?? [];
                 }
             } else if (AttachmentViewer.hasAttachment()) {
                 // fall back to cloned part
