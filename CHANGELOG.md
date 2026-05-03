@@ -1,6 +1,8 @@
 # PrivateBin version history
 
-## 2.0.4 (not yet released)
+## 2.0.5 (not yet released)
+
+## 2.0.4 (2026-05-03)
 * ADDED: Translations for Swedish & Persian
 * CHANGED: Deduplicate JSON error message translations
 * CHANGED: Refactored translation of exception messages
