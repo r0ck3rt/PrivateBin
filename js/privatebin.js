@@ -444,8 +444,9 @@ jQuery.PrivateBin = (function($) {
          * @name   Helper.urls2links
          * @function
          * @param  {HTMLElement} element
+         * @param  {bool} strict - optional
          */
-        me.urls2links = function(element)
+        me.urls2links = function(element, strict = true)
         {
             element.html(
                 DOMPurify.sanitize(
@@ -453,7 +454,7 @@ jQuery.PrivateBin = (function($) {
                         /(((https?|ftp):\/\/[\w?!=&.\/-;#@~%+*-]+(?![\w\s?!&.\/;#~%"=-]>))|((magnet):[\w?=&.\/-;#@~%+*-]+))/ig,
                         '<a href="$1" rel="nofollow noopener noreferrer">$1</a>'
                     ),
-                    purifyHtmlConfigStrictSubset
+                    strict ? purifyHtmlConfigStrictSubset : purifyHtmlConfig
                 )
             );
         };
@@ -2743,7 +2744,7 @@ jQuery.PrivateBin = (function($) {
                     // = 'plaintext'
                     $prettyPrint.text(text);
                 }
-                Helper.urls2links($prettyPrint);
+                Helper.urls2links($prettyPrint, format !== 'syntaxhighlighting');
                 $prettyPrint.css('white-space', 'pre-wrap');
                 $prettyPrint.css('word-break', 'normal');
                 $prettyPrint.removeClass('prettyprint');
